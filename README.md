@@ -5,7 +5,7 @@
 [![Paper Project Page](https://img.shields.io/badge/Project%20Page-Live-14532d)](https://saaillab.github.io/CropGuardNet/)
 [![SAAIL Lab Archive](https://img.shields.io/badge/SAAIL%20Lab-Paper%20Summary-0f172a)](https://saaillab.github.io/papers/cropguardnet/)
 [![Status](https://img.shields.io/badge/Status-Manuscript%20Under%20Peer%20Review-b45309)](https://saaillab.github.io/papers/cropguardnet/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-14532d.svg)](LICENSE)
 
 ![CropGuardNet Unified CNN-Transformer Architecture](figures/architecture.png)
 
@@ -91,7 +91,7 @@ CropGuardNet/
 │   └── dataset_info.json     # 35,420-image UUID & 64-bit pHash deduplicated manifest (80,238 duplicates purged)
 ├── figures/
 │   ├── architecture.png
-│   ├── fig08_pareto_efficiency.png
+│   ├── fig_calibration_bootstrap.png
 │   ├── fig_crosscrop_loco.png
 │   └── fig_xai_master_8crops.png
 └── docs/                     # Standalone project website (saaillab.github.io/CropGuardNet/)
@@ -129,4 +129,14 @@ python main.py --mode train --model cropguardnet
 }
 ```
 
-Maintained by **[SAAIL Lab](https://saaillab.github.io/)**, School of Engineering and Science, Indian Institute of Technology Madras Zanzibar, Tanzania.
+---
+
+## License, Attribution & Commercial Restriction
+
+All code, benchmark documentation, splits, and research artifacts in this repository are licensed strictly under **Creative Commons Attribution-NonCommercial 4.0 International ([CC BY-NC 4.0](LICENSE))** by **Innocent Nyalala & SAAIL Lab (Indian Institute of Technology Madras Zanzibar)**.
+
+- **Non-Commercial Scientific Use Only:** Materials may be studied, cited, and adapted strictly for non-commercial academic research and educational replication.
+- **Mandatory Attribution:** Any use or derivative study must explicitly acknowledge **Innocent Nyalala** ([IITMZ Profile](https://www.iitmz.ac.in/schools/engineering-and-science/faculty/prof-innocent-nyalala)) and **[SAAIL Lab](https://saaillab.github.io/)** and cite the accompanying publication above.
+- **Prohibition on Unauthorized Commercialization:** Commercial deployment, paid hosting, proprietary licensing, or product commercialization is strictly prohibited without prior written authorization and direct inclusion of **Innocent Nyalala (`innocent@iitmz.ac.in`)**.
+
+Maintained by **[SAAIL Lab](https://saaillab.github.io/)** ([IITMZ Labs](https://www.iitmz.ac.in/labs)) · School of Engineering and Science, **[Indian Institute of Technology Madras Zanzibar](https://www.iitmz.ac.in/)** · PI: **[Innocent Nyalala](https://www.iitmz.ac.in/schools/engineering-and-science/faculty/prof-innocent-nyalala)**.
