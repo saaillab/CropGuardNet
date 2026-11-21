@@ -5,14 +5,9 @@ type: software
 authors:
   - family-names: Nyalala
     given-names: Innocent
+    email: "innocent@iitmz.ac.in"
     orcid: "https://orcid.org/0000-0002-7969-437X"
     affiliation: "IIT Madras Zanzibar & WSDSAI IIT Madras"
-  - family-names: Makame
-    given-names: Twamaa
-  - family-names: Khamis
-    given-names: Khamis
-  - family-names: Gudla
-    given-names: Surabhi
 repository-code: "https://github.com/saaillab/CropGuardNet"
 url: "https://saaillab.github.io/CropGuardNet/"
 license: MIT

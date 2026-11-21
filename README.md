@@ -1,23 +1,22 @@
 # CropGuardNet
 
-> **CropGuard Research Series (Papers 1–6)** | [Umbrella Hub](https://saaillab.github.io/cropguard/)
-> **[P1: CropGuardNet](https://github.com/saaillab/CropGuardNet)** · **[P2: CropKD-Net](https://github.com/saaillab/CropKD-Net)** · P3: CropMambaNet · P4: CropDomainNet · P5: CropContinual · P6: CropGuard-Severity
+> **SAAIL Lab · Precision Agriculture & Crop Pathology** | [Lab Website](https://saaillab.github.io/) · [All Publications](https://saaillab.github.io/publications/)
 
-[![Project Page](https://img.shields.io/badge/Project%20Page-Live-2563eb)](https://saaillab.github.io/CropGuardNet/)
+[![Project Page](https://img.shields.io/badge/Project%20Page-Live-14532d)](https://saaillab.github.io/CropGuardNet/)
 [![SAAIL Lab](https://img.shields.io/badge/SAAIL%20Lab-Papers%20Hub-0f172a)](https://saaillab.github.io/papers/cropguardnet/)
-[![Status](https://img.shields.io/badge/Status-Under%20Review%20(AIIA)-059669)](https://saaillab.github.io/papers/cropguardnet/)
+[![Status](https://img.shields.io/badge/Status-Under%20Peer%20Review-b45309)](https://saaillab.github.io/papers/cropguardnet/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Official PyTorch implementation of **CropGuardNet** (**Paper 1** of the CropGuard Research Ecosystem, currently under review at *Artificial Intelligence in Agriculture*, Elsevier).
+Official PyTorch and ONNX Runtime implementation of **CropGuardNet** (*Manuscript Under Peer Review*).
 
 ![CropGuardNet Architecture](figures/architecture.png)
 
 ## Key Highlights
 
-- **Leakage-Free Data Curation:** Purges **80,238** exact SHA/UUID and perceptual-hash (pHash) duplicates across 8 crops and 38 classes, leaving **35,420 unique leaf images**.
-- **Compact Hybrid Backbone:** **481,574 parameters** (**1.84 MB** FP32, **63.8M FLOPs**), combining MobileNetV3-Small stages, a Multi-Scale Feature Pyramid (MSFP), Squeeze-and-Excitation recalibration, a 2-layer Compact Vision Transformer encoder, and Crop-Aware Conditioning.
-- **Cross-Crop Accuracy & Edge Speed:** Achieves **99.17%** accuracy (**0.9874** F1-macro across 38 classes; **0.075** ECE; **5.00 ms** CPU ONNX inference).
-- **Four-Method XAI Verification:** Benchmarks Grad-CAM++, LayerCAM, LIME, and GradientSHAP with quantitative Deletion/Insertion AUC and Pointing Game faithfulness evaluation.
+- **Leakage-Free Data Curation:** Purges **80,238** duplicate leaf images via specimen UUID grouping and 64-bit DCT perceptual-hash (pHash) auditing across 8 crops and 38 classes, establishing a clean benchmark of **35,420 unique leaf images** (`n = 5,314` held-out test set).
+- **Compact Hybrid Backbone:** **481,574 trainable parameters** (**1.84 MB** FP32, **63.8M FLOPs**), combining a half-width MobileNetV3-Small (`alpha = 0.50`) stem, a 3-branch dilated Multi-Scale Feature Pyramid (`r in {1, 2, 4}`), depthwise separable refinement, squeeze-and-excitation attention, a 1-layer 2-head Compact ViT encoder (`10,176` params), dual-path GAP fusion, and Crop-Aware Conditioning.
+- **Cross-Crop Accuracy & Edge Latency:** Reaches **99.17%** accuracy, **0.9874** F1-macro, **0.9914** MCC, and **5.00 ms** (`200.0` FPS) single-thread CPU ONNX Runtime latency, eliminating cross-crop false positives (`99.79%` automatic crop routing accuracy under Mode A1-Auto).
+- **Robustness, Cross-Crop Probing & XAI Faithfulness:** Leads 20-regime corruption evaluation (`83.61%` mean accuracy), 8-fold Leave-One-Crop-Out probing (`81.22%`, `0.8879` AUC-ROC), PlantDoc external field transfer (`63.66%` Raw RGB after 20-epoch adaptation), and four-family XAI faithfulness (`LayerCAM` Deletion AUC `0.7262`, `GradientSHAP` Insertion AUC `0.9259`).
 
 ## Repository Structure
 
@@ -29,14 +28,14 @@ CropGuardNet/
 ├── requirements.txt
 ├── src/
 │   ├── models.py             # CropGuardNet, MSFP, SE, CompactTransformerEncoder, CropAwareConditioning
-│   ├── dataset.py            # Dataset loading, stratified splits, augmentation pipeline
+│   ├── dataset.py              # Dataset loading, stratified splits, augmentation pipeline
 │   ├── train.py              # Training loop & multi-seed orchestration
 │   ├── evaluate.py           # Classification, calibration, efficiency, and ONNX benchmarks
 │   ├── xai.py                # Grad-CAM++, LayerCAM, LIME, GradientSHAP & faithfulness metrics
 │   └── robustness.py         # Synthetic weather/sensor degradations & PlantDoc evaluation
 ├── results/                  # Verified dataset summary & test classification report
-├── figures/                  # Architecture diagram, XAI gallery, and Pareto plots
-└── docs/                     # GitHub Pages project website
+├── figures/                  # Submitted TikZ architecture diagram, XAI gallery, and Pareto plots
+└── docs/                     # Standalone GitHub Pages project website
 ```
 
 ## Quick Start
@@ -51,9 +50,6 @@ python download_datasets.py
 
 # 2. Train CropGuardNet (seed 42)
 python main.py --mode train --model cropguardnet
-
-# 3. Inspect checkpoint weights
-# Pretrained CropGuardNet FP32 checkpoint (2.06 MB) is attached to Release v1.0.0.
 ```
 
 > **Note on Weights & Raw Datasets:** Heavy comparison baseline checkpoints (`VGG-16`, `ResNet-50`) and the raw 35,420 third-party `.jpg` images are excluded from git history to respect upstream licenses and repository size limits.
@@ -61,11 +57,11 @@ python main.py --mode train --model cropguardnet
 ## Citation
 
 ```bibtex
-@article{nyalala2026cropguardnet,
+@misc{nyalala2026cropguardnet,
   title={CropGuardNet: A Unified Lightweight CNN-Transformer Framework with Multi-Scale Attention and Explainable AI for Cross-Crop Leaf Disease Detection},
-  author={Nyalala, Innocent and Makame, Twamaa and Khamis, Khamis and Gudla, Surabhi and others},
-  journal={Artificial Intelligence in Agriculture},
+  author={Nyalala, Innocent},
+  howpublished={Manuscript Under Peer Review (SAAIL Lab)},
   year={2026},
-  note={Under Review}
+  url={https://saaillab.github.io/papers/cropguardnet/}
 }
 ```
