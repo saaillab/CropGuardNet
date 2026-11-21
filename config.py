@@ -45,10 +45,10 @@ class TrainingConfig:
 
     # Model
     model_name: str = "cropguardnet"
-    backbone: str = "mobilenetv3_small_050"  # Lightest: 477K params, 1.82 MB
+    backbone: str = "mobilenetv3_small_050"  # Lightest: 481,574 params, 1.84 MB FP32
     feature_dim: int = 32                   # Internal feature dimension
     pretrained: bool = True
-    num_classes: int = 15            # Updated per dataset
+    num_classes: int = 38            # 8 crops, 38 classes matching results/dataset_info.json
     dropout: float = 0.3
 
     # CropGuardNet-specific
@@ -118,22 +118,19 @@ DATASETS = {
         ],
         crop_type="apple"
     ),
-    "plantvillage_corn": DatasetConfig(
-        name="PlantVillage-Corn",
-        root=os.path.join(DATA_RAW, "plantvillage", "Corn"),
-        num_classes=4,
-        class_names=[
-            "Cercospora_leaf_spot", "Common_rust",
-            "Northern_Leaf_Blight", "healthy"
-        ],
-        crop_type="corn"
-    ),
     "plantvillage_potato": DatasetConfig(
         name="PlantVillage-Potato",
         root=os.path.join(DATA_RAW, "plantvillage", "Potato"),
         num_classes=3,
         class_names=["Early_blight", "Late_blight", "healthy"],
         crop_type="potato"
+    ),
+    "plantvillage_pepper": DatasetConfig(
+        name="PlantVillage-Pepper",
+        root=os.path.join(DATA_RAW, "plantvillage", "Pepper,_bell"),
+        num_classes=2,
+        class_names=["Bacterial_spot", "healthy"],
+        crop_type="pepper"
     ),
     "mangoleafbd": DatasetConfig(
         name="MangoLeafBD",
@@ -146,13 +143,6 @@ DATASETS = {
         ],
         crop_type="mango"
     ),
-    "rice_leaf": DatasetConfig(
-        name="RiceLeafDisease",
-        root=os.path.join(DATA_RAW, "rice_leaf", "rice_leaf_diseases"),
-        num_classes=3,
-        class_names=["Bacterial leaf blight", "Brown spot", "Leaf smut"],
-        crop_type="rice"
-    ),
     "corn_maize": DatasetConfig(
         name="CornMaizeDisease",
         root=os.path.join(DATA_RAW, "corn_maize", "data"),
@@ -160,21 +150,18 @@ DATASETS = {
         class_names=["Blight", "Common_Rust", "Gray_Leaf_Spot", "Healthy"],
         crop_type="corn"
     ),
-    "cassava": DatasetConfig(
-        name="CassavaLeafDisease",
-        root=os.path.join(DATA_RAW, "cassava"),
-        num_classes=5,
-        class_names=[
-            "Cassava_Bacterial_Blight", "Cassava_Brown_Streak",
-            "Cassava_Green_Mottle", "Cassava_Mosaic", "Healthy"
-        ],
-        crop_type="cassava"
+    "rice_leaf": DatasetConfig(
+        name="RiceLeafDisease",
+        root=os.path.join(DATA_RAW, "rice_leaf", "rice_leaf_diseases"),
+        num_classes=3,
+        class_names=["Bacterial leaf blight", "Brown spot", "Leaf smut"],
+        crop_type="rice"
     ),
 }
 
-# Crop type → integer label for crop-aware conditioning
+# Crop type → integer label for crop-aware conditioning (matches results/dataset_info.json)
 CROP_LABELS = {
-    "tomato": 0, "grape": 1, "apple": 2, "corn": 3,
-    "potato": 4, "mango": 5, "rice": 6, "cassava": 7,
+    "tomato": 0, "grape": 1, "apple": 2, "potato": 3,
+    "pepper": 4, "mango": 5, "corn": 6, "rice": 7,
 }
 NUM_CROP_TYPES = len(CROP_LABELS)

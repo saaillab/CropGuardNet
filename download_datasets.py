@@ -4,10 +4,10 @@ Dataset Download Script
 Downloads all required datasets for CropGuardNet experiments.
 
 Datasets:
-  1. PlantVillage (New Plant Diseases Dataset) — Kaggle
+  1. PlantVillage (Tomato, Grape, Apple, Potato, Bell Pepper) — Kaggle
   2. MangoLeafBD — Kaggle
   3. Rice Leaf Disease — Kaggle
-  4. Cassava Leaf Disease — Kaggle
+  4. Corn/Maize Leaf Disease — Kaggle
 
 Usage:
   python download_datasets.py
@@ -30,29 +30,22 @@ KAGGLE_DATASETS = {
     "plantvillage": {
         "kaggle_id": "vipoooool/new-plant-diseases-dataset",
         "extract_to": os.path.join(DATA_RAW, "plantvillage_raw"),
-        "description": "New Plant Diseases Dataset (87K images, 38 classes)"
+        "description": "New Plant Diseases Dataset (Tomato, Grape, Apple, Potato, Bell Pepper, Corn; UUID/pHash deduplicated)"
     },
     "mangoleafbd": {
         "kaggle_id": "aryashah2k/mango-leaf-disease-dataset",
         "extract_to": os.path.join(DATA_RAW, "mangoleafbd"),
-        "description": "MangoLeafBD Dataset (4K images, 8 classes)"
+        "description": "MangoLeafBD Dataset (4,000 images, 8 classes)"
     },
     "rice": {
         "kaggle_id": "vbookshelf/rice-leaf-diseases",
         "extract_to": os.path.join(DATA_RAW, "rice_leaf"),
-        "description": "Rice Leaf Diseases (5.9K images, 4 classes)"
-    },
-    "cassava": {
-        "kaggle_id": "marquis03/bean-leaf-lesions-classification",
-        "extract_to": os.path.join(DATA_RAW, "cassava"),
-        "description": "Cassava Leaf Disease Classification (21K images, 5 classes)",
-        "alt_kaggle_id": "c/cassava-leaf-disease-classification",
-        "is_competition": True,
+        "description": "Rice Leaf Diseases (120 images, 3 classes)"
     },
     "corn": {
         "kaggle_id": "smaranjitghose/corn-or-maize-leaf-disease-dataset",
         "extract_to": os.path.join(DATA_RAW, "corn_maize"),
-        "description": "Corn/Maize Leaf Disease Dataset (4K images, 4 classes)"
+        "description": "Corn/Maize Leaf Disease Dataset (4,188 images, 4 classes)"
     }
 }
 

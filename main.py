@@ -288,7 +288,7 @@ def main():
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--lr', type=float, default=1e-3)
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--backbone', type=str, default='efficientnet_lite0')
+    parser.add_argument('--backbone', type=str, default='mobilenetv3_small_050')
     parser.add_argument('--checkpoint', type=str, default=None)
     parser.add_argument('--experiment_name', type=str, default=None)
     args = parser.parse_args()
@@ -307,7 +307,7 @@ def main():
     if args.mode == 'info':
         # Just print model architecture info
         print("Building model for inspection...")
-        model = build_model(args.model, num_classes=15, num_crops=8,
+        model = build_model(args.model, num_classes=config.num_classes, num_crops=8,
                           backbone=args.backbone)
         if hasattr(model, 'count_parameters'):
             p = model.count_parameters()

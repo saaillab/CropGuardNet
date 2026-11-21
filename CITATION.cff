@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 title: "CropGuardNet: A Unified Lightweight CNN-Transformer Framework with Multi-Scale Attention and Explainable AI for Cross-Crop Leaf Disease Detection"
-message: "If you use this codebase or deduplication protocol, please cite our work."
+message: "If you use this software, benchmark splits, or deduplication protocol, please cite our work."
 type: software
 authors:
   - family-names: Nyalala
     given-names: Innocent
     email: "innocent@iitmz.ac.in"
     orcid: "https://orcid.org/0000-0002-7969-437X"
-    affiliation: "IIT Madras Zanzibar & WSDSAI IIT Madras"
+    affiliation: "School of Engineering and Science, Indian Institute of Technology Madras Zanzibar"
 repository-code: "https://github.com/saaillab/CropGuardNet"
 url: "https://saaillab.github.io/CropGuardNet/"
 license: MIT

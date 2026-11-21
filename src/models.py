@@ -7,7 +7,7 @@ and crop-aware conditioning for cross-crop leaf disease detection.
 Architecture:
     Input (224×224×3)
       → Preprocessing (Rescale)
-      → Lightweight Backbone (EfficientNet-Lite0 / MobileNetV3Small)
+      → Lightweight Backbone (MobileNetV3Small alpha=0.50)
       → Multi-Scale Feature Pyramid (3 scales)
       → Depthwise Separable Refinement Block
       → Squeeze-and-Excitation Channel Attention
@@ -245,7 +245,7 @@ class CropGuardNet(nn.Module):
     """
     def __init__(
         self,
-        num_classes: int = 15,
+        num_classes: int = 38,
         num_crops: int = 8,
         backbone: str = "mobilenetv3_small_050",
         pretrained: bool = True,
@@ -476,7 +476,7 @@ class MangoXNet(nn.Module):
     """Reproduced MangoXNet architecture (Subramanian et al., 2026).
 
     Lightweight hybrid CNN–Transformer with MobileNetV3Small backbone.
-    ~1.17M parameters.
+    ~4.43M parameters (4,426,374 params at 38 classes).
 
     Architecture:
         MobileNetV3Small → DSR → SE → Transformer → CNN–Transformer Fusion
@@ -565,7 +565,7 @@ if __name__ == "__main__":
     print("=" * 60)
 
     # Test CropGuardNet
-    model = CropGuardNet(num_classes=15, num_crops=8)
+    model = CropGuardNet(num_classes=38, num_crops=8)
     params = model.count_parameters()
     print(f"\nCropGuardNet Parameters:")
     print(f"  Total:     {params['total']:,}")
@@ -580,7 +580,7 @@ if __name__ == "__main__":
 
     # Test LeafXNet
     print(f"\n{'='*60}")
-    leafxnet = LeafXNet(num_classes=15)
+    leafxnet = LeafXNet(num_classes=38)
     lp = sum(p.numel() for p in leafxnet.parameters())
     print(f"LeafXNet Parameters: {lp:,}")
     out = leafxnet(x)
@@ -588,7 +588,7 @@ if __name__ == "__main__":
 
     # Test MangoXNet
     print(f"\n{'='*60}")
-    mangoxnet = MangoXNet(num_classes=15)
+    mangoxnet = MangoXNet(num_classes=38)
     mp = sum(p.numel() for p in mangoxnet.parameters())
     print(f"MangoXNet Parameters: {mp:,}")
     out = mangoxnet(x)
