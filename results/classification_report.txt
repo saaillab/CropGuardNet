@@ -1,0 +1,44 @@
+                                                            precision    recall  f1-score   support
+
+                      plantvillage/Tomato___Bacterial_spot       1.00      1.00      1.00       319
+                        plantvillage/Tomato___Early_blight       1.00      0.98      0.99       150
+                         plantvillage/Tomato___Late_blight       1.00      1.00      1.00       286
+                           plantvillage/Tomato___Leaf_Mold       1.00      1.00      1.00       143
+                  plantvillage/Tomato___Septoria_leaf_spot       1.00      1.00      1.00       266
+plantvillage/Tomato___Spider_mites Two-spotted_spider_mite       0.98      1.00      0.99       252
+                         plantvillage/Tomato___Target_Spot       0.99      0.98      0.98       211
+       plantvillage/Tomato___Tomato_Yellow_Leaf_Curl_Virus       1.00      1.00      1.00       368
+                 plantvillage/Tomato___Tomato_mosaic_virus       1.00      1.00      1.00        56
+                             plantvillage/Tomato___healthy       1.00      1.00      1.00       239
+                            plantvillage/Grape___Black_rot       1.00      1.00      1.00       177
+                 plantvillage/Grape___Esca_(Black_Measles)       1.00      1.00      1.00       208
+   plantvillage/Grape___Leaf_blight_(Isariopsis_Leaf_Spot)       1.00      1.00      1.00       161
+                              plantvillage/Grape___healthy       1.00      1.00      1.00        63
+                           plantvillage/Apple___Apple_scab       0.99      1.00      0.99        94
+                            plantvillage/Apple___Black_rot       1.00      1.00      1.00        93
+                     plantvillage/Apple___Cedar_apple_rust       1.00      1.00      1.00        41
+                              plantvillage/Apple___healthy       1.00      1.00      1.00       247
+                        plantvillage/Potato___Early_blight       1.00      0.99      1.00       150
+                         plantvillage/Potato___Late_blight       0.99      1.00      1.00       150
+                             plantvillage/Potato___healthy       1.00      1.00      1.00        23
+                plantvillage/Pepper,_bell___Bacterial_spot       1.00      1.00      1.00       149
+                       plantvillage/Pepper,_bell___healthy       1.00      1.00      1.00       222
+                                         mango/Anthracnose       1.00      1.00      1.00        75
+                                    mango/Bacterial Canker       1.00      1.00      1.00        75
+                                      mango/Cutting Weevil       1.00      1.00      1.00        75
+                                            mango/Die Back       1.00      1.00      1.00        75
+                                          mango/Gall Midge       0.99      1.00      0.99        75
+                                             mango/Healthy       1.00      0.99      0.99        75
+                                      mango/Powdery Mildew       1.00      1.00      1.00        75
+                                         mango/Sooty Mould       1.00      1.00      1.00        75
+                                               corn/Blight       0.90      0.94      0.92       172
+                                          corn/Common_Rust       0.97      0.96      0.97       196
+                                       corn/Gray_Leaf_Spot       0.91      0.84      0.87        86
+                                              corn/Healthy       1.00      1.00      1.00       174
+                                rice/Bacterial leaf blight       0.86      1.00      0.92         6
+                                           rice/Brown spot       1.00      0.83      0.91         6
+                                            rice/Leaf smut       1.00      1.00      1.00         6
+
+                                                  accuracy                           0.99      5314
+                                                 macro avg       0.99      0.99      0.99      5314
+                                              weighted avg       0.99      0.99      0.99      5314
